@@ -369,7 +369,7 @@
 
         async function generatePDF() {
             const element = document.getElementById('flyer');
-            const button = document.querySelector('button');
+            const button = event.target; // Use the actual clicked button
             button.disabled = true;
             button.textContent = 'Generando PDF...';
             
