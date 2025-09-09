@@ -498,8 +498,15 @@
                     pdf.addImage(canvas.toDataURL('image/jpeg', 0.95), 'JPEG', 0, 0, finalWidth, finalHeight);
                 }
                 
+                // Generate filename based on organization name
+                const sanitizedName = currentSettings.recipient
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]/g, '-')
+                    .replace(/-+/g, '-')
+                    .replace(/^-|-$/g, '');
+                
                 // Save the PDF
-                pdf.save('propuesta-salud-visual.pdf');
+                pdf.save(`propuesta-salud-visual-${sanitizedName}.pdf`);
                 
             } catch (error) {
                 console.error('Error generating PDF:', error);
